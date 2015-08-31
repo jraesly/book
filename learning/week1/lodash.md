@@ -83,26 +83,39 @@ The data is
 
 ### Q: What are the ages of these people?
 
-{% lodash %} var x = _.pluck(data, 'age') return x {% endlodash %}
+{% lodash %}
+var x = _.pluck(data, 'age')
+return x
+{% endlodash %}
 
-The names are {{ result }}
+The ages are {{ result }}
 
 ### Q. What is the youngest age?
 
 {% lodash %}
 
-result = .min(.pluck(data, 'age')); return result {% endlodash %}
+result  = _.min(_.pluck(data, 'age'));
+return result
+{% endlodash %}
 
 The youngest age is {{ result }}.
 
 ### Q. What is the oldest age?
 
-{% lodash %} var x = _.pluck(data, 'age'); result = _.max(x); return result {% endlodash %}
+{% lodash %}
+var x = _.pluck(data, 'age');
+result  = _.max(x);
+return result
+{% endlodash %}
 
 The oldest age is {{ result }}.
 
 ### Q. Who is the youngest person?
 
-{% lodash %} // can I write the solution in one line? return .find(data, { 'age': _.min(.pluck(data, 'age'))}, 'name'); {% endlodash %}
+{% lodash %}
+// can I write the solution in one line?
+return _.find(data, { 'age': _.min(_.pluck(data, 'age'))}, 'name');
+{% endlodash %}
 
 The youngest person is {{ result.name }}.
+
