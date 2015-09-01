@@ -6,27 +6,27 @@ As a class, we brainstormed and came up with a long list of further questions we
 on the "self-introduction" data. Out of these questions, our team chose to tackle on
 the following:
 
-# (Question 1)
+# Who submitted by the deadline? (8/24/15)
 
 {% lodash %}
 return "[answer]"
 {% endlodash %}
 
 
-# (Question 2)
+# Who has a GitHub avatar?
 
 {% lodash %}
 return "[answer]"
 {% endlodash %}
 
 
-# (Question 3)
+# How many people are CSCI majors?
 
 {% lodash %}
 return "[answer]"
 {% endlodash %}
 
-# (Question 4)
+# Who has this specific ID?
 
 {% lodash %}
 return "[answer]"
