@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Mon Aug 31 2015 16:19:55 GMT-0600 (MDT)">
+    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Mon Aug 31 2015 18:28:41 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -494,14 +494,35 @@
 more challenges analyses.</p>
 <h2 id="how-many-students-like-sushi-as-their-favorite-food">How many students like sushi as their favorite food?</h2>
 <p><pre>
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
+<span class="keyword">var</span> text = _.pluck(data.comments, <span class="string">&apos;body&apos;</span>)
+<span class="keyword">var</span> bodies = _.filter(text, <span class="keyword">function</span>(str) {
+  <span class="keyword">return</span> str.indexOf(<span class="string">&apos;Sushi&apos;</span>) &gt; <span class="number">0</span>
+  });
+<span class="keyword">return</span> bodies.length
 </pre></p>
-<p>The answer is [answer].</p>
+<p>The answer is 5.</p>
 <h2 id="who-are-the-students-liking-python-the-most">Who are the students liking Python the most?</h2>
 <p><pre>
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
-</pre></p>
-<p>Their names are [answer].</p>
+<span class="keyword">var</span> text = _.pluck(data.comments, <span class="string">&apos;body&apos;</span>)
+<span class="keyword">var</span> text1 = text.split(<span class="string">&apos;Name:&apos;</span>)
+<span class="keyword">var</span> body = _.filter(text1, <span class="keyword">function</span>(py) {
+  <span class="keyword">return</span> py.indexOf(<span class="string">&apos;Python&apos;</span>) &gt; <span class="number">0</span>
+})
+console.log(body)
+<span class="keyword">return</span> body
+
+</pre><div class="console error">TypeError: undefined is not a function
+    at Object.eval (eval at <anonymous> (/home/user/Documents/book/node_modules/gitbook-plugin-bigdata/index.js:44:29), <anonymous>:5:18)
+    at Object.module.exports.blocks.lodash.process (/home/user/Documents/book/node_modules/gitbook-plugin-bigdata/index.js:48:37)
+    at null.<anonymous> (/home/user/.gitbook/versions/2.2.0/lib/template.js:136:21)
+    at /home/user/.gitbook/versions/2.2.0/lib/template.js:267:29
+    at _fulfilled (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:787:54)
+    at self.promiseDispatch.done (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:816:30)
+    at Promise.promise.promiseDispatch (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:749:13)
+    at /home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:810:14
+    at flush (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:108:17)
+    at process._tickCallback (node.js:355:11)</anonymous></anonymous></anonymous></div></p>
+<p>Their names are .</p>
 <h2 id="are-there-more-javascript-lovers-or-java-lovers">Are there more Javascript lovers or Java lovers?</h2>
 <p><pre>
 <span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
