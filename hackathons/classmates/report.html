@@ -46,7 +46,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.2.4" data-basepath="../.." data-revision="Mon Aug 31 2015 18:28:41 GMT-0600 (MDT)">
+    <div class="book" data-level="2.2.4" data-basepath="../.." data-revision="Fri Sep 04 2015 15:41:05 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -491,22 +491,48 @@
 <p>As a class, we brainstormed and came up with a long list of further questions we can ask based
 on the &quot;self-introduction&quot; data. Out of these questions, our team chose to tackle on
 the following:</p>
-<h1 id="who-submitted-by-the-deadline-8-24-15">Who submitted by the deadline? (8/24/15)</h1>
+<h1 id="how-many-submitted-on-or-before-the-deadline-8-24-15">How many submitted on or before the deadline? (8/24/15)</h1>
 <p><pre>
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
+<span class="keyword">return</span> _.size(_.filter(data.comments, <span class="keyword">function</span>(n) {
+    <span class="keyword">var</span> date = n.created_at.split(<span class="string">&apos;T&apos;</span>)[<span class="number">0</span>].split(<span class="string">&apos;-&apos;</span>)[<span class="number">2</span>]
+    <span class="keyword">if</span> (date &lt;= <span class="string">&quot;24&quot;</span>) {
+        <span class="keyword">return</span> <span class="keyword">true</span>
+    }
+}))
 </pre></p>
-<h1 id="who-has-a-github-avatar">Who has a GitHub avatar?</h1>
+<p>The answer is 21.</p>
+<h1 id="how-many-submitted-after-the-deadline">How many submitted after the deadline?</h1>
 <p><pre>
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
+<span class="keyword">return</span> _.size(_.filter(data.comments, <span class="keyword">function</span>(n) {
+    <span class="keyword">var</span> date = n.created_at.split(<span class="string">&apos;T&apos;</span>)[<span class="number">0</span>].split(<span class="string">&apos;-&apos;</span>)[<span class="number">2</span>]
+    <span class="keyword">if</span> (date &gt; <span class="number">24</span>) {
+        <span class="keyword">return</span> <span class="keyword">true</span>
+    }
+}))
 </pre></p>
+<p>The answer is 5.</p>
 <h1 id="how-many-people-are-csci-majors">How many people are CSCI majors?</h1>
 <p><pre>
+<span class="keyword">var</span> text = data.comments
+<span class="keyword">var</span> major = _.filter(_.pluck(text,<span class="string">&apos;body&apos;</span>),<span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n,<span class="string">&quot;Computer&quot;</span>) || _.includes(n,<span class="string">&quot;CS&quot;</span>) || _.includes(n, <span class="string">&quot;cs\r&quot;</span>)
+})
+
+<span class="keyword">return</span> _.size(major)
+
 <span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
 </pre></p>
-<h1 id="who-has-this-specific-id">Who has this specific ID?</h1>
+<p>The answer is 22.</p>
+<h1 id="who-has-the-id-13950166">Who has the ID &quot;13950166&quot;?</h1>
 <p><pre>
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
+<span class="keyword">var</span> x = _.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.user, <span class="number">13950166</span>);
+})
+
+<span class="keyword">var</span> y = _.pluck(x, <span class="string">&quot;user.login&quot;</span>)
+<span class="keyword">return</span> y
 </pre></p>
+<p>The answer is tiro6090.</p>
 
                     
                     </section>
