@@ -52,12 +52,19 @@ The answer is {{result}}.
 # Who has the ID "13950166"?
 
 {% lodash %}
-var x = _.filter(data.comments, function(n){
-    return _.includes(n.user, 13950166);
-})
 
-var y = _.pluck(x, "user.login")
-return y
+var text = _.filter(data.comments, function(n){
+	return _.includes(n.user,13950166)
+});
+
+var foo = _.pluck(text,'body')
+var bar = _.map(foo,function(name){
+	var foobar = name.split("\r\n")[0]
+	return _.last(foobar.split("Name:"))
+});
+
+return bar
+
 {% endlodash %}
 
 The answer is {{result}}.
