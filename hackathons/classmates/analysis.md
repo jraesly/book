@@ -20,13 +20,18 @@ The answer is {{result}}.
 ## Who are the students liking Python the most?
 
 {% lodash %}
-var text = _.pluck(data.comments, 'body')
-var text1 = text.split('Name:')
-var body = _.filter(text1, function(py) {
-  return py.indexOf('Python') > 0
-})
-console.log(body)
-return body
+var text = _.filter(data.comments, function(n){
+	return _.includes(n.body,"Python")
+});
+
+var foo = _.pluck(text,'body')
+var bar = _.map(foo,function(name){
+	var foobar = name.split("\r\n")[0]
+	return _.last(foobar.split("Name:"))
+});
+
+return bar
+
 
 {% endlodash %}
 
@@ -35,7 +40,17 @@ Their names are {{result}}.
 ## Are there more Javascript lovers or Java lovers?
 
 {% lodash %}
-return "[answer]"
+var text = _.size(_.filter(data.comments, function(n){
+	return _.includes(n.body,"Java");
+}))
+
+var bar = _.size(_.filter(data.comments, function(n){
+	return _.includes(n.body,"Javascript");
+}))
+if(text > bar)
+	return "Java"
+else
+	return "Javascript"
 {% endlodash %}
 
 The answer is {{result}}.
@@ -43,7 +58,21 @@ The answer is {{result}}.
 ## Who like the same food as `kjblakemore`?
 
 {% lodash %}
-return "[answer]"
+var text = _.filter(data.comments, function(n){
+	return _.includes(n.body,"Vegan");
+})
+
+
+var text1 = _.pluck(text, "body")
+var name = []
+var finalName = []
+for(i = 0; i < _.size(text1);i++){
+	name.push(_.first(text1[i].split("\r\n")))
+	finalName.push(_.last(name[i].split('Name:')))
+}
+
+return finalName
+
 {% endlodash %}
 
 Their names are {{result}}.

@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Mon Aug 31 2015 18:28:41 GMT-0600 (MDT)">
+    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Fri Sep 04 2015 15:41:05 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -503,36 +503,55 @@ more challenges analyses.</p>
 <p>The answer is 5.</p>
 <h2 id="who-are-the-students-liking-python-the-most">Who are the students liking Python the most?</h2>
 <p><pre>
-<span class="keyword">var</span> text = _.pluck(data.comments, <span class="string">&apos;body&apos;</span>)
-<span class="keyword">var</span> text1 = text.split(<span class="string">&apos;Name:&apos;</span>)
-<span class="keyword">var</span> body = _.filter(text1, <span class="keyword">function</span>(py) {
-  <span class="keyword">return</span> py.indexOf(<span class="string">&apos;Python&apos;</span>) &gt; <span class="number">0</span>
-})
-console.log(body)
-<span class="keyword">return</span> body
+<span class="keyword">var</span> text = _.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Python&quot;</span>)
+});
 
-</pre><div class="console error">TypeError: undefined is not a function
-    at Object.eval (eval at <anonymous> (/home/user/Documents/book/node_modules/gitbook-plugin-bigdata/index.js:44:29), <anonymous>:5:18)
-    at Object.module.exports.blocks.lodash.process (/home/user/Documents/book/node_modules/gitbook-plugin-bigdata/index.js:48:37)
-    at null.<anonymous> (/home/user/.gitbook/versions/2.2.0/lib/template.js:136:21)
-    at /home/user/.gitbook/versions/2.2.0/lib/template.js:267:29
-    at _fulfilled (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:787:54)
-    at self.promiseDispatch.done (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:816:30)
-    at Promise.promise.promiseDispatch (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:749:13)
-    at /home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:810:14
-    at flush (/home/user/.gitbook/versions/2.2.0/node_modules/q/q.js:108:17)
-    at process._tickCallback (node.js:355:11)</anonymous></anonymous></anonymous></div></p>
-<p>Their names are .</p>
+<span class="keyword">var</span> foo = _.pluck(text,<span class="string">&apos;body&apos;</span>)
+<span class="keyword">var</span> bar = _.map(foo,<span class="keyword">function</span>(name){
+    <span class="keyword">var</span> foobar = name.split(<span class="string">&quot;\r\n&quot;</span>)[<span class="number">0</span>]
+    <span class="keyword">return</span> _.last(foobar.split(<span class="string">&quot;Name:&quot;</span>))
+});
+
+<span class="keyword">return</span> bar
+
+
+</pre></p>
+<p>Their names are  William Farmer, Heather Witte, Zach Lamb, Zhili Yang, John Cronk, Denis Kazakov, Caleb Hsu, Karen Blakemore, Sanketh S Shetty, Andrey Shprengel.</p>
 <h2 id="are-there-more-javascript-lovers-or-java-lovers">Are there more Javascript lovers or Java lovers?</h2>
 <p><pre>
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
+<span class="keyword">var</span> text = _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Java&quot;</span>);
+}))
+
+<span class="keyword">var</span> bar = _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Javascript&quot;</span>);
+}))
+<span class="keyword">if</span>(text &gt; bar)
+    <span class="keyword">return</span> <span class="string">&quot;Java&quot;</span>
+<span class="keyword">else</span>
+    <span class="keyword">return</span> <span class="string">&quot;Javascript&quot;</span>
 </pre></p>
-<p>The answer is [answer].</p>
+<p>The answer is Java.</p>
 <h2 id="who-like-the-same-food-as-kjblakemore">Who like the same food as <code>kjblakemore</code>?</h2>
 <p><pre>
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
+<span class="keyword">var</span> text = _.filter(data.comments, <span class="keyword">function</span>(n){
+    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Vegan&quot;</span>);
+})
+
+
+<span class="keyword">var</span> text1 = _.pluck(text, <span class="string">&quot;body&quot;</span>)
+<span class="keyword">var</span> name = []
+<span class="keyword">var</span> finalName = []
+<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; _.size(text1);i++){
+    name.push(_.first(text1[i].split(<span class="string">&quot;\r\n&quot;</span>)))
+    finalName.push(_.last(name[i].split(<span class="string">&apos;Name:&apos;</span>)))
+}
+
+<span class="keyword">return</span> finalName
+
 </pre></p>
-<p>Their names are [answer].</p>
+<p>Their names are  Karen Blakemore.</p>
 
                     
                     </section>
