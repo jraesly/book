@@ -64,13 +64,14 @@ var text = _.filter(data.comments, function(n){
 
 
 var text1 = _.pluck(text, "body")
+console.log(text1)
 var name = []
 var finalName = []
 for(i = 0; i < _.size(text1);i++){
 	name.push(_.first(text1[i].split("\r\n")))
 	finalName.push(_.last(name[i].split('Name:')))
 }
-
+console.log(name)
 return finalName
 
 {% endlodash %}

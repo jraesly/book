@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Fri Sep 04 2015 16:30:08 GMT-0600 (MDT)">
+    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Fri Sep 04 2015 17:37:16 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -577,16 +577,19 @@ more challenges analyses.</p>
 
 
 <span class="keyword">var</span> text1 = _.pluck(text, <span class="string">&quot;body&quot;</span>)
+console.log(text1)
 <span class="keyword">var</span> name = []
 <span class="keyword">var</span> finalName = []
 <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; _.size(text1);i++){
     name.push(_.first(text1[i].split(<span class="string">&quot;\r\n&quot;</span>)))
     finalName.push(_.last(name[i].split(<span class="string">&apos;Name:&apos;</span>)))
 }
-
+console.log(name)
 <span class="keyword">return</span> finalName
 
-</pre></p>
+</pre><div class="console"><pre>console&gt; [&quot;Name: Karen Blakemore\r\nDepartment: MS CS, BS Math\r\nFavorite Programming Language: Python\r\nFavorite Food: Vegan&quot;]
+console&gt; [&quot;Name: Karen Blakemore&quot;]
+</pre></div></p>
 <p>Their names are  Karen Blakemore.</p>
 
                     
