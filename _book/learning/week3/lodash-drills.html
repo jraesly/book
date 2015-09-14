@@ -48,7 +48,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.4.2" data-basepath="../.." data-revision="Fri Sep 11 2015 17:42:04 GMT-0600 (MDT)">
+    <div class="book" data-level="1.4.2" data-basepath="../.." data-revision="Sun Sep 13 2015 19:04:48 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -625,14 +625,14 @@ programmer but also will pave the way for you to learn MapReduce and MongoDB.</p
 ]</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>[
   &quot;John&quot;,
   &quot;Joe&quot;
-]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="comment">// both soln work!  which is better??</span>
-<span class="comment">//return _.filter(_.pluck(data,&apos;name&apos;),function(str){</span>
-<span class="comment">//    return _.startsWith(str,&apos;J&apos;);</span>
-<span class="comment">//})</span>
-
-<span class="keyword">return</span> _.pluck(_.filter(data,<span class="keyword">function</span>(entry){
-    <span class="keyword">return</span> _.startsWith(entry.name,<span class="string">&apos;J&apos;</span>);
-}),<span class="string">&apos;name&apos;</span>);</pre></div><p></p>
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> <span class="keyword">list</span> = _.filter(data, <span class="keyword">function</span>(element){
+  <span class="keyword">var</span> name=element.name
+  <span class="keyword">return</span> name.charAt(<span class="number">0</span>) == <span class="string">&apos;J&apos;</span>
+})
+<span class="keyword">var</span> result=_.map(<span class="keyword">list</span>, <span class="keyword">function</span>(element){
+  <span class="keyword">return</span> element.name
+})
+<span class="keyword">return</span> result</pre></div><p></p>
 <p></p><h2>How many Johns?</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John&apos;}, {name: &apos;John&apos;}, {name: &apos;John&apos;}, {name: &apos;Ben&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>3</pre></div></div><div class="right"><div class="section-title">Actual Output<pre>3</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> johns = _.filter(data, <span class="string">&apos;name&apos;</span>, <span class="string">&apos;John&apos;</span>);
 <span class="keyword">var</span> result = johns.length;
 <span class="keyword">return</span> result</pre></div><p></p>
@@ -658,15 +658,15 @@ programmer but also will pave the way for you to learn MapReduce and MongoDB.</p
   &quot;John&quot;,
   &quot;Mary&quot;,
   &quot;Ben&quot;
-]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">function</span> isSmith(entry){
-  <span class="keyword">return</span> _.last(_.words(entry.name)) == <span class="string">&apos;Smith&apos;</span>;
-}
-<span class="keyword">function</span> getFirstName(entry) {  
-  <span class="keyword">return</span> _.first(_.words(entry.name)); <span class="comment">// assume first name is just first word</span>
-}
-
-<span class="keyword">var</span> smiths = _.filter(data, isSmith);
-<span class="keyword">return</span> _.map(smiths, getFirstName);</pre></div><p></p>
+]</pre></div></div></div><div class="section-title">Solution</div><pre><span class="keyword">var</span> <span class="keyword">list</span> = _.filter(data, <span class="keyword">function</span>(element){
+  <span class="keyword">var</span> name=element.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> name[<span class="number">1</span>] == <span class="string">&apos;Smith&apos;</span>
+})
+<span class="keyword">var</span> result = _.map(<span class="keyword">list</span>, <span class="keyword">function</span>(element){
+  <span class="keyword">var</span> name=element.name.split(<span class="string">&quot; &quot;</span>)
+  <span class="keyword">return</span> name[<span class="number">0</span>]
+})
+<span class="keyword">return</span> result</pre></div><p></p>
 <p></p><h2>Change the format to lastname, firstname</h2><div class="lodashexercise">   <div class="result"></div><div class="ok">Done</div><div class="section-title">Data</div><pre>[{name: &apos;John Smith&apos;}, {name: &apos;Mary Kay&apos;}, {name: &apos;Peter Pan&apos;}]</pre><div class="output"><div class="left"><div class="section-title">Expected Output<pre>[
   {
     &quot;name&quot;: &quot;Smith, John&quot;

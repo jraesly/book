@@ -407,10 +407,13 @@ What are all person-favorite pairs?
 
 {% solution %}
 
-// hint: use nested _.map, then  _.flatten
+var result = _.map(data, function(foo) {
+  return _.map(foo["favorites"], function(bar) {
+    return {name: foo.name, favorite: bar}
+  })
+})
 
-var result = 'not done'
-return result
+return _.flatten(result)
 
 {% endlodashexercise %}
 
@@ -513,10 +516,14 @@ What are all age-favorite pairs (in ascending order)?
 
 {% solution %}
 
-// hint: use nested _.map, then  _.flatten
-
-var result = 'not done'
-return result
+var ageSort = _.sortBy(data,'age');
+var pairs = _.map(ageSort, function(foo){
+  var favpairs = _.map(foo.favorites, function(f){
+    return {age:foo.age,favorite:f};
+  });
+  return favpairs;
+});
+return _.flatten(pairs);
 
 {% endlodashexercise %}
 
@@ -635,9 +642,18 @@ Group people by their favorites.
 
 {% solution %}
 
-// hint: first, apply _.groupBy to the name-favovrite pairs computed earlier
-var result = 'not done'
-return result
+var groups = _.map(data, function(n){
+	var x = _.map(n.favorites,function(m){
+		var y = {"name":n.name,"favorite":m}
+		return  y
+	})
+	return x
+})
+groups = _.flatten(groups)
+groups = _.groupBy(groups, function(n){
+	return n.favorite;
+})
+return groups
 
 {% endlodashexercise %}
 
@@ -703,9 +719,25 @@ What are the names of the people in these 'favorite' groups?
 
 {% solution %}
 
+var pairs = _.map(data, function(d){
+  var favpairs = _.map(d.favorites, function(f){
+    return {name:d.name,favorite:f};
+  });
+  return favpairs;
+});
 
-var result = 'not done'
-return result
+var fpairs  = _.flatten(pairs);
+
+var groups = _.groupBy(fpairs, function(d){
+        return d.favorite;  
+    });
+
+var result =  _.mapValues(groups, function(d) {
+  var names = _.pluck(d,'name')
+  return names;
+});
+
+return result;
 
 {% endlodashexercise %}
 
@@ -742,8 +774,19 @@ What are the sizes of these 'favorite' groups?
 
 {% solution %}
 
-var result = 'not done'
-return result
+var nameFav = _.flatten(_.map(data, function(d) {
+  return _.map(d["favorites"], function(e) {
+    return {name: d.name, favorite: e}
+  })
+}))
+
+var favGroups = _.groupBy(nameFav, function(f) {
+    return f.favorite
+})
+
+return _.mapValues(favGroups, function(g) {
+    return g.length
+})
 
 {% endlodashexercise %}
 
@@ -845,8 +888,11 @@ Group people by city
 }
 {% solution %}
 
-var result = 'not done'
-return result
+var groups = _.groupBy(data, function(n){
+	var x = n.city
+	return x
+})
+return groups
 
 {% endlodashexercise %}
 
@@ -880,8 +926,13 @@ Group people by city and count how many people in each city
 
 {% solution %}
 
-var result = 'not done'
-return result
+var result = _.groupBy(data, function(d) {
+  return d.city
+})
+
+return _.mapValues(result, function(e) {
+  return e.length
+})
 
 {% endlodashexercise %}
 
@@ -914,8 +965,13 @@ What is the oldest age in each city?
 
 {% solution %}
 
-var result = 'not done'
-return result
+var result = _.groupBy(data, function(foo) {
+  return foo.city
+})
+
+return _.mapValues(result, function(bar) {
+  return _.max(_.pluck(bar, 'age'))
+})
 
 {% endlodashexercise %}
 
@@ -948,7 +1004,14 @@ How many Smith's are in each city?
 
 {% solution %}
 
-var result = 'not done'
-return result
+var result = _.groupBy(data, function(d) {
+  return d.city
+})
+
+return _.mapValues(result, function(e) {
+  return _.filter(e, function(f) {
+    return (f.name.split(' ')[1] === "Smith")
+  }).length
+})
 
 {% endlodashexercise %}

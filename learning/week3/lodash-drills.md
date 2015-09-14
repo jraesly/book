@@ -74,14 +74,15 @@ What names begin with the letter J?
 ['John','Joe']
 
 {% solution %}
-// both soln work!  which is better??
-//return _.filter(_.pluck(data,'name'),function(str){
-//    return _.startsWith(str,'J');
-//})
 
-return _.pluck(_.filter(data,function(entry){
-    return _.startsWith(entry.name,'J');
-}),'name');
+var list = _.filter(data, function(element){
+  var name=element.name
+  return name.charAt(0) == 'J'
+})
+var result=_.map(list, function(element){
+  return element.name
+})
+return result
 
 {% endlodashexercise %}
 
@@ -154,15 +155,15 @@ What are the first names of Smith?
 ["John","Mary","Ben"]
 
 {% solution %}
-function isSmith(entry){
-  return _.last(_.words(entry.name)) == 'Smith';
-}
-function getFirstName(entry) {  
-  return _.first(_.words(entry.name)); // assume first name is just first word
-}
-
-var smiths = _.filter(data, isSmith);
-return _.map(smiths, getFirstName);
+var list = _.filter(data, function(element){
+  var name=element.name.split(" ")
+  return name[1] == 'Smith'
+})
+var result = _.map(list, function(element){
+  var name=element.name.split(" ")
+  return name[0]
+})
+return result
 {% endlodashexercise %}
 
 
