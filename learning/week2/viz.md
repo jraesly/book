@@ -21,24 +21,24 @@ including the controls, widgets ...etc.
 
 # How many submitted on or before the deadline? (8/24/15)
 
-![screenshot](Screenshot (6).PNG)
+![screenshot](Screenshot(6).PNG)
 
 Code being applied to all users that looks for created_at dates before 8/24/2015. The answer is 21.
 
 
 # How many submitted after the deadline?
 
-![screenshot](Screenshot (7).png)
+![screenshot1](Screenshot(7).png)
 
 Same as the first question but applying it to people that submitted after 24. The answer is 5.
 
 # How many people are CSCI majors?
 
-![screenshot](Screenshot (5).png)
+![screenshot2](Screenshot(5).png)
 
 The answer is 21 if you count up the ones that include the parameters (Computer, CS, and cs).
 
 # Who has the ID "13950166"?
 
-![screenshot](Screenshot (4).png)
+![screenshot3](Screenshot(4).png)
 The user ID matches with the user Login. It is highlighted.
