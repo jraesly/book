@@ -27,9 +27,12 @@ At the bottom you can see that WRTG and LAWS have the highest amount of instruct
 
 # Does the instruction tends to give out higher grades if they teach more classes? or the reverse? Ming
 
+![screenshot](mingfcq.png)
 ![screenshot](Mingfcq1.png)
 
-This was difficult to show so I just put an avg grade and the total of subjects which I think correlated to the instructors avg. grade. 
+This was difficult to show so I just put an avg grade and the total of subjects which I think correlated to the instructors avg. grade.
+
+
 
 # Which department has the lowest enrollment? John
 
