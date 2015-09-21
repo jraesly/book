@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+        
+    
+        
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
         
     
@@ -48,7 +52,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Thu Sep 17 2015 15:47:39 GMT-0600 (MDT)">
+    <div class="book" data-level="2.2.3" data-basepath="../.." data-revision="Mon Sep 21 2015 16:08:23 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -318,6 +322,57 @@
                             <b>1.4.3.</b>
                         
                         Lodash GroupBy
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="learning/week4/index.html">
+            
+                
+                    <a href="../../learning/week4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Week 4
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="learning/week4/report.html">
+            
+                
+                    <a href="../../learning/week4/report.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.1.</b>
+                        
+                        FCQ Report
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="learning/week4/viz.html">
+            
+                
+                    <a href="../../learning/week4/viz.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.2.</b>
+                        
+                        FCQ Viz
                     </a>
             
             
@@ -646,65 +701,54 @@
 <p>After completing the warmup exercises, your task is to do four more slightly
 more challenges analyses.</p>
 <h2 id="how-many-students-like-sushi-as-their-favorite-food">How many students like sushi as their favorite food?</h2>
-<p><pre>
-<span class="keyword">var</span> text = _.pluck(data.comments, <span class="string">&apos;body&apos;</span>)
-<span class="keyword">var</span> bodies = _.filter(text, <span class="keyword">function</span>(str) {
-  <span class="keyword">return</span> str.indexOf(<span class="string">&apos;Sushi&apos;</span>) &gt; <span class="number">0</span>
+<p><pre><code>var text = _.pluck(data.comments, &apos;body&apos;)
+var bodies = _.filter(text, function(str) {
+  return str.indexOf(&apos;Sushi&apos;) &gt; 0
   });
-<span class="keyword">return</span> bodies.length
-</pre></p>
+return bodies.length</code></pre></p>
 <p>The answer is 5.</p>
 <h2 id="who-are-the-students-liking-python-the-most">Who are the students liking Python the most?</h2>
-<p><pre>
-<span class="keyword">var</span> text = _.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Python&quot;</span>)
+<p><pre><code>var text = _.filter(data.comments, function(n){
+	return _.includes(n.body,&quot;Python&quot;)
 });
 
-<span class="keyword">var</span> foo = _.pluck(text,<span class="string">&apos;body&apos;</span>)
-<span class="keyword">var</span> bar = _.map(foo,<span class="keyword">function</span>(name){
-    <span class="keyword">var</span> foobar = name.split(<span class="string">&quot;\r\n&quot;</span>)[<span class="number">0</span>]
-    <span class="keyword">return</span> _.last(foobar.split(<span class="string">&quot;Name:&quot;</span>))
+var foo = _.pluck(text,&apos;body&apos;)
+var bar = _.map(foo,function(name){
+	var foobar = name.split(&quot;\r\n&quot;)[0]
+	return _.last(foobar.split(&quot;Name:&quot;))
 });
 
-<span class="keyword">return</span> bar
-
-
-</pre></p>
+return bar</code></pre></p>
 <p>Their names are  William Farmer, Heather Witte, Zach Lamb, Zhili Yang, John Cronk, Denis Kazakov, Caleb Hsu, Karen Blakemore, Sanketh S Shetty, Andrey Shprengel.</p>
 <h2 id="are-there-more-javascript-lovers-or-java-lovers">Are there more Javascript lovers or Java lovers?</h2>
-<p><pre>
-<span class="keyword">var</span> text = _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Java&quot;</span>);
+<p><pre><code>var text = _.size(_.filter(data.comments, function(n){
+	return _.includes(n.body,&quot;Java&quot;);
 }))
 
-<span class="keyword">var</span> bar = _.size(_.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Javascript&quot;</span>);
+var bar = _.size(_.filter(data.comments, function(n){
+	return _.includes(n.body,&quot;Javascript&quot;);
 }))
-<span class="keyword">if</span>(text &gt; bar)
-    <span class="keyword">return</span> <span class="string">&quot;Java&quot;</span>
-<span class="keyword">else</span>
-    <span class="keyword">return</span> <span class="string">&quot;Javascript&quot;</span>
-</pre></p>
+if(text &gt; bar)
+	return &quot;Java&quot;
+else
+	return &quot;Javascript&quot;</code></pre></p>
 <p>The answer is Java.</p>
 <h2 id="who-like-the-same-food-as-kjblakemore">Who like the same food as <code>kjblakemore</code>?</h2>
-<p><pre>
-<span class="keyword">var</span> text = _.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.body,<span class="string">&quot;Vegan&quot;</span>);
+<p><pre><code>var text = _.filter(data.comments, function(n){
+	return _.includes(n.body,&quot;Vegan&quot;);
 })
 
 
-<span class="keyword">var</span> text1 = _.pluck(text, <span class="string">&quot;body&quot;</span>)
+var text1 = _.pluck(text, &quot;body&quot;)
 console.log(text1)
-<span class="keyword">var</span> name = []
-<span class="keyword">var</span> finalName = []
-<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; _.size(text1);i++){
-    name.push(_.first(text1[i].split(<span class="string">&quot;\r\n&quot;</span>)))
-    finalName.push(_.last(name[i].split(<span class="string">&apos;Name:&apos;</span>)))
+var name = []
+var finalName = []
+for(i = 0; i &lt; _.size(text1);i++){
+	name.push(_.first(text1[i].split(&quot;\r\n&quot;)))
+	finalName.push(_.last(name[i].split(&apos;Name:&apos;)))
 }
 console.log(name)
-<span class="keyword">return</span> finalName
-
-</pre><div class="console">console&gt; [
+return finalName</code></pre><div class="console">console&gt; [
  &quot;Name: Karen Blakemore\r\nDepartment: MS CS, BS Math\r\nFavorite Programming Language: Python\r\nFavorite Food: Vegan&quot;
 ]
 console&gt; [
@@ -732,6 +776,14 @@ console&gt; [
 
         
 <script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-bigdata/bigdata.js"></script>
+    
+
+    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
