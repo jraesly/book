@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Intro | book</title>
+        <title>FCQ Report | book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.2.0">
@@ -41,10 +41,10 @@
         
     
     
-    <link rel="next" href="../../learning/intro/q-big-data.html" />
+    <link rel="next" href="../../learning/week4/viz.html" />
     
     
-    <link rel="prev" href="../../learning/index.html" />
+    <link rel="prev" href="../../learning/week4/index.html" />
     
 
         <!-- head:end -->
@@ -52,7 +52,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.1" data-basepath="../.." data-revision="Mon Sep 21 2015 16:08:23 GMT-0600 (MDT)">
+    <div class="book" data-level="1.5.1" data-basepath="../.." data-revision="Mon Sep 21 2015 16:08:23 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -98,7 +98,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.1" data-path="learning/intro/index.html">
+        <li class="chapter " data-level="1.1" data-path="learning/intro/index.html">
             
                 
                     <a href="../../learning/intro/index.html">
@@ -348,7 +348,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="learning/week4/report.html">
+        <li class="chapter active" data-level="1.5.1" data-path="learning/week4/report.html">
             
                 
                     <a href="../../learning/week4/report.html">
@@ -697,13 +697,843 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="learning-challenge-intro">Learning Challenge: Intro</h1>
-<p>This introductory learning challenge has three questions.</p>
-<ul>
-<li>Q: What is big data? (Team)</li>
-<li>Q: Which programming language is the top favorite among the students in our class? (Team)</li>
-<li>Q: What programming languages have the most packages? (Individual)</li>
-</ul>
+                        <p></p>
+<h1 id="report">Report</h1>
+<p>As a class, we brainstormed and came up with a long list of further questions we
+can ask based on the FCQ data. Out of these questions, our team chose to tackle on
+the following questions. Each member on our team is reponsible for one question.</p>
+<h1 id="how-many-instructors-have-taught-each-subject-kari">How many instructors have taught each subject? Kari</h1>
+<p><pre><code>var groups = _.groupBy(data, &apos;Subject&apos;);
+// collect all the instructor names for each class and count uniq
+var ret1 = _.mapValues(groups, function(d){
+ 	var instrArr = _.pluck(d, &apos;Instructors&apos;);
+ 	//var j = 0;
+ 	var nameArr = _.map(instrArr, function(d){
+ 		var names = _.pluck(d, &apos;name&apos;);
+ 		//if (j==0){console.log(names); j++}
+ 		return names;
+ 	});
+ 	return _.size(_.uniq(_.flatten(nameArr)));
+});
+
+return ret1;</code></pre></p>
+<table><tr><td>Subject</td>
+    <td>Num Instructors</td></tr>
+
+    <tr>
+        <td>HIST</td>
+        <td>45</td>
+    </tr>
+
+    <tr>
+        <td>HONR</td>
+        <td>10</td>
+    </tr>
+
+    <tr>
+        <td>HUMN</td>
+        <td>13</td>
+    </tr>
+
+    <tr>
+        <td>IAFS</td>
+        <td>16</td>
+    </tr>
+
+    <tr>
+        <td>IPHY</td>
+        <td>34</td>
+    </tr>
+
+    <tr>
+        <td>LING</td>
+        <td>19</td>
+    </tr>
+
+    <tr>
+        <td>MATH</td>
+        <td>61</td>
+    </tr>
+
+    <tr>
+        <td>MCDB</td>
+        <td>32</td>
+    </tr>
+
+    <tr>
+        <td>BAKR</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>PHIL</td>
+        <td>48</td>
+    </tr>
+
+    <tr>
+        <td>PHYS</td>
+        <td>54</td>
+    </tr>
+
+    <tr>
+        <td>PSCI</td>
+        <td>47</td>
+    </tr>
+
+    <tr>
+        <td>NRSC</td>
+        <td>9</td>
+    </tr>
+
+    <tr>
+        <td>PSYC</td>
+        <td>47</td>
+    </tr>
+
+    <tr>
+        <td>WRTG</td>
+        <td>85</td>
+    </tr>
+
+    <tr>
+        <td>RLST</td>
+        <td>13</td>
+    </tr>
+
+    <tr>
+        <td>SLHS</td>
+        <td>28</td>
+    </tr>
+
+    <tr>
+        <td>SOCY</td>
+        <td>58</td>
+    </tr>
+
+    <tr>
+        <td>ARAB</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>PORT</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>SPAN</td>
+        <td>62</td>
+    </tr>
+
+    <tr>
+        <td>COMR</td>
+        <td>4</td>
+    </tr>
+
+    <tr>
+        <td>FARR</td>
+        <td>8</td>
+    </tr>
+
+    <tr>
+        <td>GSAP</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>INVS</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <td>PACS</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>SEWL</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>DNCE</td>
+        <td>31</td>
+    </tr>
+
+    <tr>
+        <td>THTR</td>
+        <td>31</td>
+    </tr>
+
+    <tr>
+        <td>WMST</td>
+        <td>14</td>
+    </tr>
+
+    <tr>
+        <td>ACCT</td>
+        <td>17</td>
+    </tr>
+
+    <tr>
+        <td>BADM</td>
+        <td>16</td>
+    </tr>
+
+    <tr>
+        <td>BCOR</td>
+        <td>23</td>
+    </tr>
+
+    <tr>
+        <td>BSLW</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>BUSM</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <td>CESR</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <td>ESBM</td>
+        <td>13</td>
+    </tr>
+
+    <tr>
+        <td>FNCE</td>
+        <td>16</td>
+    </tr>
+
+    <tr>
+        <td>INBU</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>MBAC</td>
+        <td>11</td>
+    </tr>
+
+    <tr>
+        <td>MBAX</td>
+        <td>26</td>
+    </tr>
+
+    <tr>
+        <td>MGMT</td>
+        <td>28</td>
+    </tr>
+
+    <tr>
+        <td>MKTG</td>
+        <td>20</td>
+    </tr>
+
+    <tr>
+        <td>REAL</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>EDUC</td>
+        <td>75</td>
+    </tr>
+
+    <tr>
+        <td>ASEN</td>
+        <td>38</td>
+    </tr>
+
+    <tr>
+        <td>CHEN</td>
+        <td>21</td>
+    </tr>
+
+    <tr>
+        <td>CSCI</td>
+        <td>34</td>
+    </tr>
+
+    <tr>
+        <td>AREN</td>
+        <td>18</td>
+    </tr>
+
+    <tr>
+        <td>CVEN</td>
+        <td>40</td>
+    </tr>
+
+    <tr>
+        <td>ECEN</td>
+        <td>37</td>
+    </tr>
+
+    <tr>
+        <td>EMEN</td>
+        <td>9</td>
+    </tr>
+
+    <tr>
+        <td>EHON</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>GEEN</td>
+        <td>44</td>
+    </tr>
+
+    <tr>
+        <td>EVEN</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>HUEN</td>
+        <td>11</td>
+    </tr>
+
+    <tr>
+        <td>MCEN</td>
+        <td>48</td>
+    </tr>
+
+    <tr>
+        <td>TLEN</td>
+        <td>19</td>
+    </tr>
+
+    <tr>
+        <td>ATLS</td>
+        <td>18</td>
+    </tr>
+
+    <tr>
+        <td>MUSM</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <td>RSEI</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>JOUR</td>
+        <td>52</td>
+    </tr>
+
+    <tr>
+        <td>LAWS</td>
+        <td>89</td>
+    </tr>
+
+    <tr>
+        <td>CONV</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>EMUS</td>
+        <td>19</td>
+    </tr>
+
+    <tr>
+        <td>MUEL</td>
+        <td>25</td>
+    </tr>
+
+    <tr>
+        <td>MUSC</td>
+        <td>50</td>
+    </tr>
+
+    <tr>
+        <td>PMUS</td>
+        <td>31</td>
+    </tr>
+
+    <tr>
+        <td>TMUS</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>AIRR</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <td>MILR</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <td>NAVR</td>
+        <td>6</td>
+    </tr>
+
+    <tr>
+        <td>CSVC</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>LDSP</td>
+        <td>9</td>
+    </tr>
+
+    <tr>
+        <td>NRLN</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>PRLC</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>ARCH</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>ENVD</td>
+        <td>35</td>
+    </tr>
+
+    <tr>
+        <td>ARTH</td>
+        <td>10</td>
+    </tr>
+
+    <tr>
+        <td>ARTS</td>
+        <td>40</td>
+    </tr>
+
+    <tr>
+        <td>CAMW</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>CWCV</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>LGBT</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>LIBB</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>CHIN</td>
+        <td>6</td>
+    </tr>
+
+    <tr>
+        <td>FRSI</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>HIND</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>JPNS</td>
+        <td>7</td>
+    </tr>
+
+    <tr>
+        <td>KREN</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>ANTH</td>
+        <td>23</td>
+    </tr>
+
+    <tr>
+        <td>APPM</td>
+        <td>28</td>
+    </tr>
+
+    <tr>
+        <td>ASTR</td>
+        <td>21</td>
+    </tr>
+
+    <tr>
+        <td>ARSC</td>
+        <td>20</td>
+    </tr>
+
+    <tr>
+        <td>ATOC</td>
+        <td>19</td>
+    </tr>
+
+    <tr>
+        <td>CHEM</td>
+        <td>34</td>
+    </tr>
+
+    <tr>
+        <td>CLAS</td>
+        <td>16</td>
+    </tr>
+
+    <tr>
+        <td>COMM</td>
+        <td>35</td>
+    </tr>
+
+    <tr>
+        <td>EBIO</td>
+        <td>35</td>
+    </tr>
+
+    <tr>
+        <td>ECON</td>
+        <td>48</td>
+    </tr>
+
+    <tr>
+        <td>ENGL</td>
+        <td>72</td>
+    </tr>
+
+    <tr>
+        <td>ENVS</td>
+        <td>16</td>
+    </tr>
+
+    <tr>
+        <td>ETHN</td>
+        <td>16</td>
+    </tr>
+
+    <tr>
+        <td>FILM</td>
+        <td>23</td>
+    </tr>
+
+    <tr>
+        <td>FREN</td>
+        <td>23</td>
+    </tr>
+
+    <tr>
+        <td>ITAL</td>
+        <td>9</td>
+    </tr>
+
+    <tr>
+        <td>GEOG</td>
+        <td>22</td>
+    </tr>
+
+    <tr>
+        <td>GEOL</td>
+        <td>30</td>
+    </tr>
+
+    <tr>
+        <td>GRMN</td>
+        <td>20</td>
+    </tr>
+
+    <tr>
+        <td>HEBR</td>
+        <td>3</td>
+    </tr>
+
+    <tr>
+        <td>RUSS</td>
+        <td>10</td>
+    </tr>
+
+    <tr>
+        <td>SCAN</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td>SWED</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>LEAD</td>
+        <td>1</td>
+    </tr>
+
+</table>
+
+<h1 id="does-the-instruction-tends-to-give-out-higher-grades-if-they-teach-more-classes-or-the-reverse-ming">Does the instruction tends to give out higher grades if they teach more classes? or the reverse? Ming</h1>
+<p><pre><code>var graded = _.filter(data,function(d){
+	return d.hasOwnProperty(&quot;AVG_GRD&quot;);
+})
+
+var smallData = _.map(graded, function(d){
+	var avg_grd = d.AVG_GRD;
+	var nameArr = _.pluck(d.Instructors, &apos;name&apos;);
+ 	var objArray = _.map(nameArr, function(d){
+ 		var obj = {name:d,AVG_GRD:avg_grd};
+ 		return obj;
+ 	})
+ 	return objArray;
+});
+
+var groups = _.groupBy(_.flatten(smallData),&apos;name&apos;);
+var groups2 = _.map(groups, function(d){
+	var avg = _.reduce(d, function(total,e){
+		return total+e.AVG_GRD;
+	},0)/_.size(d);
+	var obj = {classcount:_.size(d),AVG_GRD:avg,name:_.first(d).name}
+	return obj;
+});
+
+var groups3 = _.groupBy(groups2,&apos;classcount&apos;);
+var avgbyCount = _.mapValues(groups3, function(d){
+	var avg = _.round(_.reduce(d, function(total,e){
+		return total+e.AVG_GRD;
+	},0)/_.size(d),2);
+	var obj = {classcount:_.first(d).classcount,AVG_GRD:avg,instrCount:_.size(d)}
+	return obj;
+});
+
+
+return avgbyCount</code></pre>
+Based on the table below, there does not seem to be a trend between the number of classes taught and average grade.</p>
+<table><tr><td>Num Classes Taught</td>
+    <td>Avg Grade</td><td>Num Instructors</td>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td>3.28</td>
+        <td>800
+    </td></tr>
+
+    <tr>
+        <td>2</td>
+        <td>3.27</td>
+        <td>656
+    </td></tr>
+
+    <tr>
+        <td>3</td>
+        <td>3.3</td>
+        <td>277
+    </td></tr>
+
+    <tr>
+        <td>4</td>
+        <td>3.21</td>
+        <td>139
+    </td></tr>
+
+    <tr>
+        <td>5</td>
+        <td>3.23</td>
+        <td>61
+    </td></tr>
+
+    <tr>
+        <td>6</td>
+        <td>3.17</td>
+        <td>69
+    </td></tr>
+
+    <tr>
+        <td>7</td>
+        <td>3.2</td>
+        <td>29
+    </td></tr>
+
+    <tr>
+        <td>8</td>
+        <td>3.11</td>
+        <td>25
+    </td></tr>
+
+    <tr>
+        <td>9</td>
+        <td>3.55</td>
+        <td>7
+    </td></tr>
+
+    <tr>
+        <td>10</td>
+        <td>2.72</td>
+        <td>2
+    </td></tr>
+
+    <tr>
+        <td>14</td>
+        <td>3.48</td>
+        <td>2
+    </td></tr>
+
+    <tr>
+        <td>15</td>
+        <td>3.53</td>
+        <td>2
+    </td></tr>
+
+    <tr>
+        <td>16</td>
+        <td>3.86</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>20</td>
+        <td>3.3</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>21</td>
+        <td>2.55</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>22</td>
+        <td>3.19</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>25</td>
+        <td>2.91</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>26</td>
+        <td>3.12</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>27</td>
+        <td>2.91</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>33</td>
+        <td>2.7</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>39</td>
+        <td>2.73</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>41</td>
+        <td>2.6</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>60</td>
+        <td>2.92</td>
+        <td>1
+    </td></tr>
+
+    <tr>
+        <td>64</td>
+        <td>2.38</td>
+        <td>1
+    </td></tr>
+
+</table>
+
+
+<h1 id="which-department-has-the-lowest-enrollment-john">Which department has the lowest enrollment? John</h1>
+<p><pre><code>var grps = _.groupBy(data, &apos;CrsPBADept&apos;)
+var ret1 = _.mapValues(grps, function(d){
+  var enrollNumbers = _.pluck(d, &apos;N.ENROLL&apos;)
+  return _.sum(enrollNumbers)
+  })
+  var min = _.min(ret1)
+  var dept = _.pick(ret1, function(d){
+    return d == min
+    })
+
+return dept</code></pre></p>
+<table>
+
+    <tr>
+        <td>RASE</td>
+        <td>30</td>
+    </tr>
+
+</table>
+
+
+<h1 id="which-subject-is-most-in-demand-based-on-the-total-number-of-enrollment-sussant">Which subject is most in demand,based on the total number of enrollment? Sussant</h1>
+<p><pre><code>var group = _.groupBy(data, &quot;Subject&quot;)
+var sum = _.mapValues(group, function(n){
+    var enroll = _.pluck(n, &quot;N.ENROLL&quot;)
+    return _.sum(enroll)
+})
+var max = _.max(sum)
+var result = _.pick(sum, function(x){
+    return x == max
+})
+return result</code></pre></p>
+<pre style="font-size:11px;line-height:1;max-height:300px;">{
+ &quot;MATH&quot;: 8725
+}</pre>
+
+
+<p>MATH is the subject most in demand with 8725 enrollments.</p>
+<h1 id="which-course-has-the-highest-enrollment-andrew">Which course has the highest enrollment? Andrew</h1>
+<p><pre><code>var grps = _.groupBy(data, &apos;CourseTitle&apos;)
+var ret1 = _.mapValues(grps, function(d){
+  var enrollNumbers = _.pluck(d, &apos;N.ENROLL&apos;)
+  return _.sum(enrollNumbers)
+  })
+  var max = _.max(ret1)
+  var bigClass = _.pick(ret1, function(d){
+    return d == max
+    })
+
+return bigClass</code></pre></p>
+<table>
+
+    <tr>
+        <td>First-Year Writing and Rhetoric</td>
+        <td>3187</td>
+    </tr>
+
+</table>
+
 
                     
                     </section>
@@ -714,10 +1544,10 @@
         </div>
 
         
-        <a href="../../learning/index.html" class="navigation navigation-prev " aria-label="Previous page: Learning"><i class="fa fa-angle-left"></i></a>
+        <a href="../../learning/week4/index.html" class="navigation navigation-prev " aria-label="Previous page: Week 4"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../learning/intro/q-big-data.html" class="navigation navigation-next " aria-label="Next page: Q. Big data"><i class="fa fa-angle-right"></i></a>
+        <a href="../../learning/week4/viz.html" class="navigation navigation-next " aria-label="Next page: FCQ Viz"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

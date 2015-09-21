@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+        
+    
+        
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
         
     
@@ -48,7 +52,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.3.1" data-basepath="../.." data-revision="Thu Sep 17 2015 15:47:39 GMT-0600 (MDT)">
+    <div class="book" data-level="1.3.1" data-basepath="../.." data-revision="Mon Sep 21 2015 16:08:23 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -318,6 +322,57 @@
                             <b>1.4.3.</b>
                         
                         Lodash GroupBy
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="learning/week4/index.html">
+            
+                
+                    <a href="../../learning/week4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Week 4
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="learning/week4/report.html">
+            
+                
+                    <a href="../../learning/week4/report.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.1.</b>
+                        
+                        FCQ Report
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="learning/week4/viz.html">
+            
+                
+                    <a href="../../learning/week4/viz.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.2.</b>
+                        
+                        FCQ Viz
                     </a>
             
             
@@ -647,53 +702,40 @@
 on the &quot;self-introduction&quot; data. Out of these questions, our team chose to tackle on
 the following:</p>
 <h1 id="how-many-submitted-on-or-before-the-deadline-8-24-15">How many submitted on or before the deadline? (8/24/15)</h1>
-<p><pre>
-<span class="keyword">return</span> _.size(_.filter(data.comments, <span class="keyword">function</span>(n) {
-    <span class="keyword">var</span> date = n.created_at.split(<span class="string">&apos;T&apos;</span>)[<span class="number">0</span>].split(<span class="string">&apos;-&apos;</span>)[<span class="number">2</span>]
-    <span class="keyword">if</span> (date &lt;= <span class="string">&quot;24&quot;</span>) {
-        <span class="keyword">return</span> <span class="keyword">true</span>
-    }
-}))
-</pre></p>
+<p><pre><code>return _.size(_.filter(data.comments, function(n) {
+    var date = n.created_at.split(&apos;T&apos;)[0].split(&apos;-&apos;)[2]
+    if (date <= "24")="" {="" return="" true="" }="" }))<="" code=""></=></code></pre></p>
 <p>The answer is 21.</p>
 <h1 id="how-many-submitted-after-the-deadline">How many submitted after the deadline?</h1>
-<p><pre>
-<span class="keyword">return</span> _.size(_.filter(data.comments, <span class="keyword">function</span>(n) {
-    <span class="keyword">var</span> date = n.created_at.split(<span class="string">&apos;T&apos;</span>)[<span class="number">0</span>].split(<span class="string">&apos;-&apos;</span>)[<span class="number">2</span>]
-    <span class="keyword">if</span> (date &gt; <span class="number">24</span>) {
-        <span class="keyword">return</span> <span class="keyword">true</span>
+<p><pre><code>return _.size(_.filter(data.comments, function(n) {
+    var date = n.created_at.split(&apos;T&apos;)[0].split(&apos;-&apos;)[2]
+    if (date &gt; 24) {
+        return true
     }
-}))
-</pre></p>
+}))</code></pre></p>
 <p>The answer is 5.</p>
 <h1 id="how-many-people-are-csci-majors">How many people are CSCI majors?</h1>
-<p><pre>
-<span class="keyword">var</span> text = data.comments
-<span class="keyword">var</span> major = _.filter(_.pluck(text,<span class="string">&apos;body&apos;</span>),<span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n,<span class="string">&quot;Computer&quot;</span>) || _.includes(n,<span class="string">&quot;CS&quot;</span>) || _.includes(n, <span class="string">&quot;cs\r&quot;</span>)
+<p><pre><code>var text = data.comments
+var major = _.filter(_.pluck(text,&apos;body&apos;),function(n){
+	return _.includes(n,&quot;Computer&quot;) || _.includes(n,&quot;CS&quot;) || _.includes(n, &quot;cs\r&quot;)
 })
 
-<span class="keyword">return</span> _.size(major)
+return _.size(major)
 
-<span class="keyword">return</span> <span class="string">&quot;[answer]&quot;</span>
-</pre></p>
+return &quot;[answer]&quot;</code></pre></p>
 <p>The answer is 22.</p>
 <h1 id="who-has-the-id-13950166">Who has the ID &quot;13950166&quot;?</h1>
-<p><pre>
-
-<span class="keyword">var</span> text = _.filter(data.comments, <span class="keyword">function</span>(n){
-    <span class="keyword">return</span> _.includes(n.user,<span class="number">13950166</span>)
+<p><pre><code>var text = _.filter(data.comments, function(n){
+	return _.includes(n.user,13950166)
 });
 
-<span class="keyword">var</span> foo = _.pluck(text,<span class="string">&apos;body&apos;</span>)
-<span class="keyword">var</span> bar = _.map(foo,<span class="keyword">function</span>(name){
-    <span class="keyword">var</span> foobar = name.split(<span class="string">&quot;\r\n&quot;</span>)[<span class="number">0</span>]
-    <span class="keyword">return</span> _.last(foobar.split(<span class="string">&quot;Name:&quot;</span>))
+var foo = _.pluck(text,&apos;body&apos;)
+var bar = _.map(foo,function(name){
+	var foobar = name.split(&quot;\r\n&quot;)[0]
+	return _.last(foobar.split(&quot;Name:&quot;))
 });
 
-<span class="keyword">return</span> bar
-
-</pre></p>
+return bar</code></pre></p>
 <p>The answer is  TJ Romanowski.</p>
 
                     
@@ -715,6 +757,14 @@ the following:</p>
 
         
 <script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-bigdata/bigdata.js"></script>
+    
+
+    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>

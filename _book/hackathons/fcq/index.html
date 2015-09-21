@@ -29,6 +29,10 @@
         
     
         
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/default.min.css">
+        
+    
+        
         <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
         
     
@@ -48,7 +52,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="2.3" data-basepath="../.." data-revision="Thu Sep 17 2015 15:47:39 GMT-0600 (MDT)">
+    <div class="book" data-level="2.3" data-basepath="../.." data-revision="Mon Sep 21 2015 16:08:23 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -318,6 +322,57 @@
                             <b>1.4.3.</b>
                         
                         Lodash GroupBy
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="learning/week4/index.html">
+            
+                
+                    <a href="../../learning/week4/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        Week 4
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="learning/week4/report.html">
+            
+                
+                    <a href="../../learning/week4/report.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.1.</b>
+                        
+                        FCQ Report
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="learning/week4/viz.html">
+            
+                
+                    <a href="../../learning/week4/viz.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.2.</b>
+                        
+                        FCQ Viz
                     </a>
             
             
@@ -713,24 +768,18 @@ There are 5000 records in this slice.</p>
 <p>Study the following examples of aggregate analysis across colleges based
 on the <code>CrsPBAColl</code> field.</p>
 <h3 id="how-many-courses-have-a-valid-college-code">How many courses have a valid college code?</h3>
-<p><pre>
-<span class="keyword">return</span> _.filter(data, <span class="keyword">function</span>(d){
-            <span class="keyword">return</span> d[<span class="string">&apos;CrsPBAColl&apos;</span>]
-        })    
-</pre></p>
+<p><pre><code>return _.filter(data, function(d){
+            return d[&apos;CrsPBAColl&apos;]
+        })</code></pre></p>
 <p>The answer is 4981.</p>
 <h2 id="what-are-the-unique-college-codes">What are the unique college codes?</h2>
-<p><pre>
-<span class="keyword">return</span> _.compact(_.uniq(_.pluck(data, <span class="string">&apos;CrsPBAColl&apos;</span>)))
-</pre></p>
+<p><pre><code>return _.compact(_.uniq(_.pluck(data, &apos;CrsPBAColl&apos;)))</code></pre></p>
 <p>They are AS,BU,EB,EN,GR,JR,LW,MB,XX,AP.</p>
 <h2 id="what-is-the-distribution-of-the-courses-across-colleges">What is the distribution of the courses across colleges?</h2>
-<p><pre>
-<span class="keyword">var</span> grps = _.groupBy(data, <span class="string">&apos;CrsPBAColl&apos;</span>)
-<span class="keyword">return</span> _.mapValues(grps, <span class="keyword">function</span>(d){
-    <span class="keyword">return</span> d.length
-})
-</pre></p>
+<p><pre><code>var grps = _.groupBy(data, &apos;CrsPBAColl&apos;)
+return _.mapValues(grps, function(d){
+    return d.length
+})</code></pre></p>
 <pre style="font-size:11px;line-height:1;max-height:300px;">{
  &quot;AS&quot;: 3237,
  &quot;BU&quot;: 378,
@@ -746,13 +795,11 @@ on the <code>CrsPBAColl</code> field.</p>
 }</pre>
 
 <h2 id="what-are-the-total-student-enrollments-compared-across-colleges">What are the total student enrollments compared across colleges?</h2>
-<p><pre>
-<span class="keyword">var</span> grps = _.groupBy(data, <span class="string">&apos;CrsPBAColl&apos;</span>)
-<span class="keyword">return</span> _.mapValues(grps, <span class="keyword">function</span>(d){
-    <span class="keyword">var</span> enrollNumbers = _.pluck(d, <span class="string">&apos;N.ENROLL&apos;</span>)
-    <span class="keyword">return</span> _.sum(enrollNumbers)
-})
-</pre></p>
+<p><pre><code>var grps = _.groupBy(data, &apos;CrsPBAColl&apos;)
+return _.mapValues(grps, function(d){
+    var enrollNumbers = _.pluck(d, &apos;N.ENROLL&apos;)
+    return _.sum(enrollNumbers)
+})</code></pre></p>
 <pre style="font-size:11px;line-height:1;max-height:300px;">{
  &quot;AS&quot;: 119563,
  &quot;BU&quot;: 17523,
@@ -786,6 +833,14 @@ on the <code>CrsPBAColl</code> field.</p>
 
         
 <script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-bigdata/bigdata.js"></script>
+    
+
+    
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+    
 
     
     <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
