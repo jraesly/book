@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Week 1 | book</title>
+        <title>Warmup | book</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.2.0">
@@ -45,10 +45,10 @@
         
     
     
-    <link rel="next" href="../../learning/week1/svg-template.html" />
+    <link rel="next" href="../../hackathons/open/report.html" />
     
     
-    <link rel="prev" href="../../learning/intro/q-packages.html" />
+    <link rel="prev" href="../../hackathons/open/index.html" />
     
 
         <!-- head:end -->
@@ -56,7 +56,7 @@
     <body>
         <!-- body:start -->
         
-    <div class="book" data-level="1.2" data-basepath="../.." data-revision="Mon Sep 28 2015 18:30:24 GMT-0600 (MDT)">
+    <div class="book" data-level="2.5.1" data-basepath="../.." data-revision="Mon Sep 28 2015 18:30:24 GMT-0600 (MDT)">
     
 
 <div class="book-summary">
@@ -168,7 +168,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="learning/week1/index.html">
+        <li class="chapter " data-level="1.2" data-path="learning/week1/index.html">
             
                 
                     <a href="../../learning/week1/index.html">
@@ -724,7 +724,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.5.1" data-path="hackathons/open/warmup.html">
+        <li class="chapter active" data-level="2.5.1" data-path="hackathons/open/warmup.html">
             
                 
                     <a href="../../hackathons/open/warmup.html">
@@ -869,13 +869,108 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h1 id="team">Team</h1>
-<ul>
-<li>Lodash 101</li>
-<li>Template Engine</li>
-</ul>
-<h1 id="individual">Individual</h1>
-<p>TBA</p>
+                        <h1 id="warmup">Warmup</h1>
+<p>Complete this warmup exercise to get an idea how to put all the different pieces
+together to generate an end-to-end data analysis viz report.</p>
+<p><a name="top"></a></p>
+<div id="autonav"></div>
+
+<p></p>
+<p></p><h2> <span class="text">What is the distribution of courses across colleges?</span><a href="#top" style="font-size: 14px; float: right;">[top]</a></h2><div class="lodashexercise">   <a name="foo">   </a><div class="output">       <div class="section-title">Viz<svg width="100%" height="400"><rect x="0" y="0" height="20" width="100" style="fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)"/>
+<rect x="0" y="20" height="20" width="120" style="fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)"/>
+<rect x="0" y="40" height="20" width="140" style="fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)"/>
+<rect x="0" y="60" height="20" width="160" style="fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)"/></svg></div></div><div class="output"><div class="section-title">                <pre><code>&lt;rect x=&quot;0&quot;
+      y=&quot;0&quot;
+      height=&quot;20&quot;
+      width=&quot;100&quot;
+      style=&quot;fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)&quot; /&gt;
+&lt;rect x=&quot;0&quot;
+      y=&quot;20&quot;
+      height=&quot;20&quot;
+      width=&quot;120&quot;
+      style=&quot;fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)&quot; /&gt;
+&lt;rect x=&quot;0&quot;
+      y=&quot;40&quot;
+      height=&quot;20&quot;
+      width=&quot;140&quot;
+      style=&quot;fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)&quot; /&gt;
+&lt;rect x=&quot;0&quot;
+      y=&quot;60&quot;
+      height=&quot;20&quot;
+      width=&quot;160&quot;
+      style=&quot;fill:red;
+             stroke-width:3;
+             stroke:rgb(0,0,0)&quot; /&gt;</code></pre></div></div><div class="section-title">Solution: SVG Template<pre><code>&lt;rect x=&quot;0&quot;
+      y=&quot;${d.y}&quot;
+      height=&quot;20&quot;
+      width=&quot;${d.width}&quot;
+      style=&quot;fill:${d.color};
+             stroke-width:3;
+             stroke:rgb(0,0,0)&quot; /&gt;</code></pre></div><div class="section-title">Solution: Javascript</div><pre><code>var groups = _.groupBy(data, function(d){
+    return d[&apos;CrsPBAColl&apos;]
+})
+
+// TODO: add real code to convert groups (which is an object) into an array like below
+// This array should have a lot more elements.
+var counts = [{&quot;name&quot;: &quot;AS&quot;,&quot;count&quot;: 3237},
+    {&quot;name&quot;: &quot;BU&quot;,&quot;count&quot;: 378},
+    {&quot;name&quot;: &quot;EB&quot;,&quot;count&quot;: 139},
+    {&quot;name&quot;: &quot;EN&quot;,&quot;count&quot;: 573}]
+
+console.log(counts)
+
+// TODO: modify the code below to produce a nice vertical bar charts
+
+function computeX(d, i) {
+    return 0
+}
+
+function computeHeight(d, i) {
+    return 20
+}
+
+function computeWidth(d, i) {
+    return 20 * i + 100
+}
+
+function computeY(d, i) {
+    return 20 * i
+}
+
+function computeColor(d, i) {
+    return &apos;red&apos;
+}
+
+var viz = _.map(counts, function(d, i){
+            return {
+                x: computeX(d, i),
+                y: computeY(d, i),
+                height: computeHeight(d, i),
+                width: computeWidth(d, i),
+                color: computeColor(d, i)
+            }
+         })
+console.log(viz)
+
+var result = _.map(viz, function(d){
+         // invoke the compiled template function on each viz data
+         return template({d: d})
+     })
+return result.join(&apos;\n&apos;)</code></pre><div class="section-title">Console<div style="border:1px solid #eee; margin-bottom: 5px;"><span style="font-size:10px;line-height:11px;" class="inspect">       [{&quot;name&quot;:&quot;AS&quot;,&quot;count&quot;:3237},{&quot;name&quot;:&quot;BU&quot;,&quot;count&quot;:378},{&quot;name&quot;:&quot;EB&quot;,&quot;count&quot;:139},{&quot;name&quot;:&quot;EN&quot;,&quot;count&quot;:573}]</span></div><div style="border:1px solid #eee; margin-bottom: 5px;"><span style="font-size:10px;line-height:11px;" class="inspect">       [{&quot;x&quot;:0,&quot;y&quot;:0,&quot;height&quot;:20,&quot;width&quot;:100,&quot;color&quot;:&quot;red&quot;},{&quot;x&quot;:0,&quot;y&quot;:20,&quot;height&quot;:20,&quot;width&quot;:120,&quot;color&quot;:&quot;red&quot;},{&quot;x&quot;:0,&quot;y&quot;:40,&quot;height&quot;:20,&quot;width&quot;:140,&quot;color&quot;:&quot;red&quot;},{&quot;x&quot;:0,&quot;y&quot;:60,&quot;height&quot;:20,&quot;width&quot;:160,&quot;color&quot;:&quot;red&quot;}]</span></div></div></div><p></p>
 
                     
                     </section>
@@ -886,10 +981,10 @@
         </div>
 
         
-        <a href="../../learning/intro/q-packages.html" class="navigation navigation-prev " aria-label="Previous page: Q. Packages"><i class="fa fa-angle-left"></i></a>
+        <a href="../../hackathons/open/index.html" class="navigation navigation-prev " aria-label="Previous page: Open"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../learning/week1/svg-template.html" class="navigation navigation-next " aria-label="Next page: Template Engine"><i class="fa fa-angle-right"></i></a>
+        <a href="../../hackathons/open/report.html" class="navigation navigation-next " aria-label="Next page: Report"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

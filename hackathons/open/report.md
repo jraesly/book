@@ -1,3 +1,6 @@
+{% data src="emergency.json" %}
+{% enddata %}
+
 # Report
 
 Use only Javascript and SVG to produce a data analysis / visualization report.
@@ -5,22 +8,45 @@ Use only Javascript and SVG to produce a data analysis / visualization report.
 # Authors
 
 This report is prepared by
-* [Full name](link to github account)
-* [Full name](link to github account)
-* [Full name](link to github account)
+* [Robbie Kendl](http://github.com/DomoYeti)
+* [John Raesly](http://github.com/jraesly)
+* [Kevin Gifford](http://github.com/kevinkgifford)
 
 <a name="top"/>
 <div id="autonav"></div>
 
-# (Question 1)
+# What borough has the highest number incidents?
 
-Use the warmup exercise as the template to produce an answer here.
+{% lodash %}
+return _.chain(data)
+        .groupBy(function(obj) { return obj["Borough"]; })
+        .mapValues(function(arr) { return arr.length; })
+        .value();
+{% endlodash %}
 
-# (Question 2)
+{{ result | json }}
 
-Use the warmup exercise as the template to produce an answer here.
+# Which incident is the most common?
+{% lodash %}
+return _.chain(data)
+        .groupBy(function(obj) { return obj["Incident Type"]; })
+        .mapValues(function(arr) { return arr.length; })
+        .value();
+{% endlodash %}
 
-# (Question 3)
+{{ result | json }}
 
-Use the warmup exercise as the template to produce an answer here. Remove this
-question if you work as a unit of two.
+# Which borough has the highest Fire-1st Alarm incident?
+
+{% lodash %}
+var group = _.groupBy(data, "Fire-1st Alarm")
+var sum = _.mapValues(group, function(n){
+    var fire = _.pluck(n, "Borough")
+    return _.sum(fire)
+})
+
+return sum
+
+{% endlodash %}
+
+{{result|json}}
