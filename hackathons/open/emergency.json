@@ -1873,7 +1873,7 @@
     },
     {
         "Incident Type": "HazMat-Chemical",
-        "Borough": "bronx"
+        "Borough": "Bronx"
     },
     {
         "Incident Type": "Utility-Sewer Service",
@@ -2297,7 +2297,7 @@
     },
     {
         "Incident Type": "Structural-Life Safety Violations",
-        "Borough": "bronx"
+        "Borough": "Bronx"
     },
     {
         "Incident Type": "Law Enforcement-Haz Mat",
